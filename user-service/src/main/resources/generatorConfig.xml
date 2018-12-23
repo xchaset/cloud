@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" 
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+	<context id="gen" targetRuntime="MyBatis3">
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin">
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+		</plugin>
+		<plugin type="org.mybatis.generator.plugins.ToStringPlugin"></plugin>
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<!--数据库url、用户名和密码 -->
+		 <jdbcConnection driverClass="org.postgresql.Driver"
+			connectionURL="jdbc:postgresql://localhost:5432/postgres" userId="postgres" password="xchaset">
+		</jdbcConnection>
+		<!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
+		<!--<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/shgl?useUnicode=true&amp;characterEncoding=UTF-8&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;nullNamePatternMatchesAll=true" userId="root" password="xchaset">
+		</jdbcConnection>-->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+		<!--实体类 -->
+		<javaModelGenerator targetPackage="com.xchaset.user.po" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!--Mapping映射文件 -->
+		<sqlMapGenerator targetPackage="mybatis" targetProject="src\main\resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!--DAO接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.xchaset.user.mapper" targetProject="src\main\java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!--需要生成实体类和xml的数据库表-->
+		<table  tableName="sys_role" domainObjectName="SysRolePO"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false" enableSelectByPrimaryKey="true"
+				enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+		/>
+
+		<table  tableName="menu_info" domainObjectName="MenuInfoPO"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false" enableSelectByPrimaryKey="true"
+				enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+		/>
+
+		<table  tableName="user_info" domainObjectName="UserInfoPO"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false" enableSelectByPrimaryKey="true"
+				enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+		/>
+
+		<table  tableName="user_role_relation" domainObjectName="UserRoleRelationPO"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false" enableSelectByPrimaryKey="true"
+				enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+		/>
+
+		<table  tableName="menu_role_relation" domainObjectName="MenuRoleRelationPO"
+				enableCountByExample="false" enableUpdateByExample="false"
+				enableDeleteByExample="false" enableSelectByExample="false"
+				selectByExampleQueryId="false" enableSelectByPrimaryKey="true"
+				enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true"
+		/>
+
+	</context>
+</generatorConfiguration>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xchaset.user.mapper.MenuInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.xchaset.user.po.MenuInfoPO" >
+    <id column="id_menu_info" property="idMenuInfo" jdbcType="VARCHAR" />
+    <result column="item_code" property="itemCode" jdbcType="VARCHAR" />
+    <result column="parent_code" property="parentCode" jdbcType="VARCHAR" />
+    <result column="item_name" property="itemName" jdbcType="VARCHAR" />
+    <result column="item_link" property="itemLink" jdbcType="VARCHAR" />
+    <result column="item_img_url" property="itemImgUrl" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_enabled" property="isEnabled" jdbcType="BIT" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_date" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="delete_date" property="deleteDate" jdbcType="TIMESTAMP" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id_menu_info, item_code, parent_code, item_name, item_link, item_img_url, remark, 
+    is_enabled, created_by, created_date, updated_by, updated_date, delete_date, language
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from menu_info
+    where id_menu_info = #{idMenuInfo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from menu_info
+    where id_menu_info = #{idMenuInfo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xchaset.user.po.MenuInfoPO" >
+    insert into menu_info (id_menu_info, item_code, parent_code, 
+      item_name, item_link, item_img_url, 
+      remark, is_enabled, created_by, 
+      created_date, updated_by, updated_date, 
+      delete_date, language)
+    values (#{idMenuInfo,jdbcType=VARCHAR}, #{itemCode,jdbcType=VARCHAR}, #{parentCode,jdbcType=VARCHAR}, 
+      #{itemName,jdbcType=VARCHAR}, #{itemLink,jdbcType=VARCHAR}, #{itemImgUrl,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{isEnabled,jdbcType=BIT}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDate,jdbcType=TIMESTAMP}, 
+      #{deleteDate,jdbcType=TIMESTAMP}, #{language,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xchaset.user.po.MenuInfoPO" >
+    insert into menu_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idMenuInfo != null" >
+        id_menu_info,
+      </if>
+      <if test="itemCode != null" >
+        item_code,
+      </if>
+      <if test="parentCode != null" >
+        parent_code,
+      </if>
+      <if test="itemName != null" >
+        item_name,
+      </if>
+      <if test="itemLink != null" >
+        item_link,
+      </if>
+      <if test="itemImgUrl != null" >
+        item_img_url,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdDate != null" >
+        created_date,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedDate != null" >
+        updated_date,
+      </if>
+      <if test="deleteDate != null" >
+        delete_date,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idMenuInfo != null" >
+        #{idMenuInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemCode != null" >
+        #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null" >
+        #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemLink != null" >
+        #{itemLink,jdbcType=VARCHAR},
+      </if>
+      <if test="itemImgUrl != null" >
+        #{itemImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null" >
+        #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xchaset.user.po.MenuInfoPO" >
+    update menu_info
+    <set >
+      <if test="itemCode != null" >
+        item_code = #{itemCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentCode != null" >
+        parent_code = #{parentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null" >
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemLink != null" >
+        item_link = #{itemLink,jdbcType=VARCHAR},
+      </if>
+      <if test="itemImgUrl != null" >
+        item_img_url = #{itemImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled = #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null" >
+        delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_menu_info = #{idMenuInfo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xchaset.user.po.MenuInfoPO" >
+    update menu_info
+    set item_code = #{itemCode,jdbcType=VARCHAR},
+      parent_code = #{parentCode,jdbcType=VARCHAR},
+      item_name = #{itemName,jdbcType=VARCHAR},
+      item_link = #{itemLink,jdbcType=VARCHAR},
+      item_img_url = #{itemImgUrl,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_enabled = #{isEnabled,jdbcType=BIT},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      language = #{language,jdbcType=VARCHAR}
+    where id_menu_info = #{idMenuInfo,jdbcType=VARCHAR}
+  </update>
+</mapper>

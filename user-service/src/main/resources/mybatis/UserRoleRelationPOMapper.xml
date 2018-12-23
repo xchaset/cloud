@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xchaset.user.mapper.UserRoleRelationPOMapper" >
+  <resultMap id="BaseResultMap" type="com.xchaset.user.po.UserRoleRelationPO" >
+    <id column="is_user_role_relation" property="isUserRoleRelation" jdbcType="VARCHAR" />
+    <result column="role_code" property="roleCode" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_date" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="delete_date" property="deleteDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    is_user_role_relation, role_code, user_name, status, remark, created_by, created_date, 
+    updated_by, updated_date, delete_date
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_role_relation
+    where is_user_role_relation = #{isUserRoleRelation,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_role_relation
+    where is_user_role_relation = #{isUserRoleRelation,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xchaset.user.po.UserRoleRelationPO" >
+    insert into user_role_relation (is_user_role_relation, role_code, user_name, 
+      status, remark, created_by, 
+      created_date, updated_by, updated_date, 
+      delete_date)
+    values (#{isUserRoleRelation,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, #{updatedDate,jdbcType=TIMESTAMP}, 
+      #{deleteDate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xchaset.user.po.UserRoleRelationPO" >
+    insert into user_role_relation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="isUserRoleRelation != null" >
+        is_user_role_relation,
+      </if>
+      <if test="roleCode != null" >
+        role_code,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdDate != null" >
+        created_date,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedDate != null" >
+        updated_date,
+      </if>
+      <if test="deleteDate != null" >
+        delete_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="isUserRoleRelation != null" >
+        #{isUserRoleRelation,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null" >
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null" >
+        #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xchaset.user.po.UserRoleRelationPO" >
+    update user_role_relation
+    <set >
+      <if test="roleCode != null" >
+        role_code = #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null" >
+        delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where is_user_role_relation = #{isUserRoleRelation,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xchaset.user.po.UserRoleRelationPO" >
+    update user_role_relation
+    set role_code = #{roleCode,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      delete_date = #{deleteDate,jdbcType=TIMESTAMP}
+    where is_user_role_relation = #{isUserRoleRelation,jdbcType=VARCHAR}
+  </update>
+</mapper>

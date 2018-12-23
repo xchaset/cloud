@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xchaset.user.mapper.UserInfoPOMapper" >
+  <resultMap id="BaseResultMap" type="com.xchaset.user.po.UserInfoPO" >
+    <id column="id_user_info" property="idUserInfo" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="pwd_salt" property="pwdSalt" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="brith_day" property="brithDay" jdbcType="TIMESTAMP" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="is_enabled" property="isEnabled" jdbcType="BIT" />
+    <result column="is_credentials_non_expired" property="isCredentialsNonExpired" jdbcType="BIT" />
+    <result column="is_account_non_locked" property="isAccountNonLocked" jdbcType="BIT" />
+    <result column="is_account_non_expired" property="isAccountNonExpired" jdbcType="BIT" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_date" property="createdDate" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_date" property="updatedDate" jdbcType="TIMESTAMP" />
+    <result column="delete_date" property="deleteDate" jdbcType="TIMESTAMP" />
+    <result column="data_source" property="dataSource" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id_user_info, user_name, nick_name, real_name, password, pwd_salt, email, mobile, 
+    sex, brith_day, remark, is_enabled, is_credentials_non_expired, is_account_non_locked, 
+    is_account_non_expired, created_by, created_date, updated_by, updated_date, delete_date, 
+    data_source, user_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id_user_info = #{idUserInfo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from user_info
+    where id_user_info = #{idUserInfo,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xchaset.user.po.UserInfoPO" >
+    insert into user_info (id_user_info, user_name, nick_name, 
+      real_name, password, pwd_salt, 
+      email, mobile, sex, 
+      brith_day, remark, is_enabled, 
+      is_credentials_non_expired, is_account_non_locked, is_account_non_expired, 
+      created_by, created_date, updated_by, 
+      updated_date, delete_date, data_source, 
+      user_type)
+    values (#{idUserInfo,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{realName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{pwdSalt,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{brithDay,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{isEnabled,jdbcType=BIT}, 
+      #{isCredentialsNonExpired,jdbcType=BIT}, #{isAccountNonLocked,jdbcType=BIT}, #{isAccountNonExpired,jdbcType=BIT}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdDate,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{updatedDate,jdbcType=TIMESTAMP}, #{deleteDate,jdbcType=TIMESTAMP}, #{dataSource,jdbcType=VARCHAR}, 
+      #{userType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xchaset.user.po.UserInfoPO" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="idUserInfo != null" >
+        id_user_info,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="pwdSalt != null" >
+        pwd_salt,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="brithDay != null" >
+        brith_day,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled,
+      </if>
+      <if test="isCredentialsNonExpired != null" >
+        is_credentials_non_expired,
+      </if>
+      <if test="isAccountNonLocked != null" >
+        is_account_non_locked,
+      </if>
+      <if test="isAccountNonExpired != null" >
+        is_account_non_expired,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdDate != null" >
+        created_date,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedDate != null" >
+        updated_date,
+      </if>
+      <if test="deleteDate != null" >
+        delete_date,
+      </if>
+      <if test="dataSource != null" >
+        data_source,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="idUserInfo != null" >
+        #{idUserInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdSalt != null" >
+        #{pwdSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="brithDay != null" >
+        #{brithDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="isCredentialsNonExpired != null" >
+        #{isCredentialsNonExpired,jdbcType=BIT},
+      </if>
+      <if test="isAccountNonLocked != null" >
+        #{isAccountNonLocked,jdbcType=BIT},
+      </if>
+      <if test="isAccountNonExpired != null" >
+        #{isAccountNonExpired,jdbcType=BIT},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null" >
+        #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataSource != null" >
+        #{dataSource,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xchaset.user.po.UserInfoPO" >
+    update user_info
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdSalt != null" >
+        pwd_salt = #{pwdSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="brithDay != null" >
+        brith_day = #{brithDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isEnabled != null" >
+        is_enabled = #{isEnabled,jdbcType=BIT},
+      </if>
+      <if test="isCredentialsNonExpired != null" >
+        is_credentials_non_expired = #{isCredentialsNonExpired,jdbcType=BIT},
+      </if>
+      <if test="isAccountNonLocked != null" >
+        is_account_non_locked = #{isAccountNonLocked,jdbcType=BIT},
+      </if>
+      <if test="isAccountNonExpired != null" >
+        is_account_non_expired = #{isAccountNonExpired,jdbcType=BIT},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdDate != null" >
+        created_date = #{createdDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedDate != null" >
+        updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteDate != null" >
+        delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dataSource != null" >
+        data_source = #{dataSource,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_user_info = #{idUserInfo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xchaset.user.po.UserInfoPO" >
+    update user_info
+    set user_name = #{userName,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      pwd_salt = #{pwdSalt,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      brith_day = #{brithDay,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_enabled = #{isEnabled,jdbcType=BIT},
+      is_credentials_non_expired = #{isCredentialsNonExpired,jdbcType=BIT},
+      is_account_non_locked = #{isAccountNonLocked,jdbcType=BIT},
+      is_account_non_expired = #{isAccountNonExpired,jdbcType=BIT},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_date = #{createdDate,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_date = #{updatedDate,jdbcType=TIMESTAMP},
+      delete_date = #{deleteDate,jdbcType=TIMESTAMP},
+      data_source = #{dataSource,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=VARCHAR}
+    where id_user_info = #{idUserInfo,jdbcType=VARCHAR}
+  </update>
+</mapper>
