@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: autoGarage
+          uri: lb://autoGarage
+          predicates:
+          - Path=/autoGarage/**
+          filters:
+            - StripPrefix=1
+            - Jwt  #自定义过滤器
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 1
+                redis-rate-limiter.burstCapacity: 3
+                key-resolver: "#{@pathKeyResolver}"
+        - id: image_route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/producer_image
+      default-filters:
+logging:
+  level:
+    com.xchaset.gateway: debug
+
+
